@@ -1,0 +1,46 @@
+import requests
+import re
+import webbrowser
+from bs4 import BeautifulSoup
+
+url = 'https://www.indeed.com'
+
+session = requests.Session()
+response = session.get(url, headers={'user-agent': 'Mozilla/5.0'})
+required = requests.get(url)
+zipurl = 'https://www.indeed.com/jobs'
+delimiters = [",", ".", "!", "?", "/", "&", "-", ":", ";", "@", "'", "...","{","}"]
+s = ""
+
+search1 = input('What type of job would you like?' " ")
+zipcode1 = input('What zipcode would you like to search?' " ")
+distance1 = input('How large of an area from that zipcode do you want to search?' " ")
+#adding string to url
+search2 = search1.replace(" ", "+")
+
+urldict = {'?q=':search2,'&l=':zipcode1, '&radius=':distance1}
+
+
+urlstr = str(urldict)
+
+zipstr = urlstr.replace(',',"").replace("'","").replace(" ","").replace("{","").replace("}","").replace(":","")
+
+#urlstr1 = str(urlstr)
+
+
+zipped = s.join(zipurl+zipstr)
+
+print(zipped)
+
+
+webbrowser.open(zipped,new=2,autoraise=True)
+
+
+request = session.get(zipped, headers={'user-agent': 'Mozilla/5.0'})
+page = requests.get(zipped)
+page.cookies
+soup = BeautifulSoup(page.content, "html.parser")
+result = soup.find("section", id = "job_results")
+
+result
+print(soup)
