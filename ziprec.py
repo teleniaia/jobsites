@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 import webbrowser
-import re
 
 ws = tk.Tk()
 ws.geometry("500x900")
