@@ -10,7 +10,7 @@ ws.title("Job Search")
 zipcodeurl = 'https://www.zipcodes.org'
 
 jobsearch = ttk.Frame(ws)
-jobsearch.pack(padx=20, pady=20, fill='x', expand=True)
+jobsearch.pack(padx=0, pady=0, fill='x', expand=True)
 
 #Labels and Entries for user input to build out each URL str
 entries = []
@@ -34,7 +34,7 @@ entries.append(distance1)
 
 #zipcode lookup button 
 zipcodelookup = ttk.Button(ws, text='Zip Code Lookup', command =lambda:zipcodeurl_clicked())
-zipcodelookup.pack(fill='x',expand=True,pady=10)
+zipcodelookup.pack(fill='x',expand=True,pady=0)
 
 #zipcode lookup button function
 def zipcodeurl_clicked():
@@ -51,7 +51,7 @@ zipcheck.pack(fill='x', expand=True)
 
 #submit button runs check box variables
 submit = ttk.Button(ws, text='Search',command =lambda:submit_clicked())
-submit.pack(fill='x', expand=True, pady=10)
+submit.pack(fill='x', expand=True, pady=0)
 
 def submit_clicked():
     """Callback when submit button clicked
