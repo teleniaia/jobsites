@@ -5,17 +5,14 @@ import re
 
 ws = tk.Tk()
 ws.geometry("500x900")
-
 ws.title("Job Search")
-
-
 
 zipcodeurl = 'https://www.zipcodes.org'
 
 jobsearch = ttk.Frame(ws)
 jobsearch.pack(padx=20, pady=20, fill='x', expand=True)
 
-#Labels and Entries for user entry to build out each URL
+#Labels and Entries for user input to build out each URL str
 entries = []
 search1_label = ttk.Label(ws,text = "Job Search")
 search1_label.pack(fill='x', expand=True)
@@ -34,9 +31,14 @@ distance_label.pack(fill='x', expand=True)
 distance1 = ttk.Entry(ws)
 distance1.pack(fill='x', expand=True)     
 entries.append(distance1)
-#zipcode lookup button    
+
+#zipcode lookup button 
 zipcodelookup = ttk.Button(ws, text='Zip Code Lookup', command =lambda:zipcodeurl_clicked())
 zipcodelookup.pack(fill='x',expand=True,pady=10)
+
+#zipcode lookup button function
+def zipcodeurl_clicked():
+    webbrowser.open(zipcodeurl,new=2,autoraise=False)
 
 #URL Checkboxes
 indeedv = tk.IntVar()
@@ -79,10 +81,5 @@ def submit_clicked():
         ziprecruiter = s.join(zipurl+zipstr)
         webbrowser.open(ziprecruiter,new=2,autoraise=True)
         print(ziprecruiter)
-
-#zipcode lookup button function
-def zipcodeurl_clicked():
-    webbrowser.open(zipcodeurl,new=2,autoraise=False)
-
 
 ws.mainloop()
